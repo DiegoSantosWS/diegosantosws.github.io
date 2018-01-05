@@ -14,11 +14,11 @@ func Funcao(w http.ResponseWriter, r *http.Request) {
 
 // SendMail envia um email
 func SendMail(body string) {
-	from := "tec.infor321@gmail.com"
-	to := "felipe@wsitebrasil.com.br,tec.infor321@gmail.com"
-	to1 := []string{"felipe@wsitebrasil.com.br", "tec.infor321@gmail.com", "wander.douglas14@gmail.com"}
+	from := "...@gmail.com"
+	to := "...@dominio.com.br,...@gmail.com"
+	to1 := []string{"...@dominio.com.br", "...@gmail.com", "...@gmail.com"}
 	// Configurando as altenticações de e-mail
-	auth := smtp.PlainAuth("", "diego@wsitebrasil.com.br", "di@#12SD", "zmail.grupoparanet.com.br")
+	auth := smtp.PlainAuth("", "...@dominio.com.br", "password", "mail.host.com.br")
 	// Conectar ao servidor, autenticar, configurar o remetente e o destinatario,
 	// e envie o email tudo em uma unica etapa
 
@@ -28,7 +28,7 @@ func SendMail(body string) {
 		body
 
 	msg := []byte(dados)
-	err := smtp.SendMail("zmail.grupoparanet.com.br:587", auth, "diego@wsitebrasil.com.br", to1, msg)
+	err := smtp.SendMail("mail.hotst.com.br:587", auth, "diego@dominio.com.br", to1, msg)
 	if err != nil {
 		log.Printf("[SENDMAIL] smtp error: %s", err.Error())
 		return
