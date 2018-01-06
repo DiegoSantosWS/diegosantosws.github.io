@@ -25,18 +25,20 @@ func EnviarContato(w http.ResponseWriter, r *http.Request) {
 	r.ParseForm()
 
 	nome := r.Form.Get("nome")
-	sobrenome := r.Form.Get("sobrenome")
+	telefone := r.Form.Get("telefone")
 	to := r.Form.Get("email")
+	texto := r.Form.Get("mensagem")
 
 	msg := "Novo Contato\r\n"
-	msg += fmt.Sprintf("Nome: %s %s", nome, sobrenome)
+	msg += fmt.Sprintf("Nome: %s", nome)
+	msg += "\r\n"
+	msg += fmt.Sprintf("Telefone: %s", telefone)
 	msg += "\r\n"
 	msg += fmt.Sprintf("Email: %s", to)
 	msg += "\r\n"
-	msg += "Mensagem enviada via Go!"
+	msg += "\r\n"
+	msg += fmt.Sprintf("Mensagem:\r\n %s", texto)
 
-	SendMail(msg)
-	fmt.Printf("Olá %s %s seu email é: %s", nome, sobrenome, to)
-	http.Redirect(w, r, "/contato?msg=Obrigado", http.StatusSeeOther)
-
+	SendMail(msg, "E-mail Contato")
+	http.Redirect(w, r, "/contato?msg=Agradecemos seu contato.#resp", http.StatusSeeOther)
 }
