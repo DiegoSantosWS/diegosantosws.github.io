@@ -9,9 +9,9 @@ import (
 
 func main() {
 	//Routes to files statics
-	http.Handle("/static", http.FileServer(http.Dir("static")))
-	//http.HandleFunc("/style.css", manipulador.CssPrincipal)
-	//http.HandleFunc("/ima1.jpg", manipulador.Imagens1)
+	//http.Handle("/static", http.FileServer(http.Dir("static")))
+	http.HandleFunc("/style.css", manipulador.CSSPrincipal)
+	http.HandleFunc("/ima1.jpg", manipulador.Imagens1)
 	//http.HandleFunc("/2.jpg", manipulador.Imagens2)
 	//http.HandleFunc("/3.jpg", manipulador.Imagens3)
 
